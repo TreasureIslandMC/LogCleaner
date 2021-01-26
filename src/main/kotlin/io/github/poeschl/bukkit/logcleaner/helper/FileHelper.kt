@@ -13,14 +13,14 @@ interface FileHelper {
     fun delete(file: File): Boolean
 
     companion object {
-        val LOGS_FOLDER_NAME = "logs"
+        const val LOGS_FOLDER_NAME = "logs"
     }
 }
 
 class FileHelperImpl(private val logger: Logger) : FileHelper {
 
     override fun getLogArchives(logFolder: File): List<File> {
-        val archiveFilter = FilenameFilter { dir, name -> name.endsWith(".gz") }
+        val archiveFilter = FilenameFilter { _, name -> name.endsWith(".gz") }
 
         return logFolder.listFiles(archiveFilter).asList()
     }

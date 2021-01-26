@@ -12,19 +12,19 @@ import java.io.File
 import java.util.logging.Logger
 
 open class InstanceFactory {
-    open internal fun createSettingsManager(config: FileConfiguration, logger: Logger): SettingsManager {
+    internal open fun createSettingsManager(config: FileConfiguration, logger: Logger): SettingsManager {
         return SettingsManagerImpl(config, logger)
     }
 
-    open internal fun getLogger(javaPlugin: JavaPlugin): Logger {
+    internal open fun getLogger(javaPlugin: JavaPlugin): Logger {
         return javaPlugin.logger
     }
 
-    open internal fun createFileHelper(logger: Logger): FileHelper {
+    internal open fun createFileHelper(logger: Logger): FileHelper {
         return FileHelperImpl(logger)
     }
 
-    open internal fun createLogCleanerRunnable(fileHelper: FileHelper, settingManager: SettingsManager, logFolder: File): LogCleanerRunnable {
+    internal open fun createLogCleanerRunnable(fileHelper: FileHelper, settingManager: SettingsManager, logFolder: File): LogCleanerRunnable {
         return LogCleanerRunnableImpl(fileHelper, settingManager.keepDays, logFolder)
     }
 }

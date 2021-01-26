@@ -33,10 +33,10 @@ open class LogCleanerPlugin : JavaPlugin() {
         activateLogCleaner()
     }
 
-    open internal val info: PluginDescriptionFile
+    internal open val info: PluginDescriptionFile
         get() = description
 
-    open internal fun initFields() {
+    internal open fun initFields() {
         instanceFactory = createInstanceFactory()
         pluginLogger = instanceFactory.getLogger(this)
         settingManager = instanceFactory.createSettingsManager(config, pluginLogger)
@@ -44,11 +44,11 @@ open class LogCleanerPlugin : JavaPlugin() {
         logCleanerRunnable = instanceFactory.createLogCleanerRunnable(fileHelper, settingManager, LOG_FOLDER)
     }
 
-    open internal fun createInstanceFactory(): InstanceFactory {
+    internal open fun createInstanceFactory(): InstanceFactory {
         return InstanceFactory()
     }
 
-    open internal fun activateLogCleaner() {
+    internal open fun activateLogCleaner() {
         pluginLogger.info("Starting LogCleanerPlugin Thread")
         logCleanerRunnable.setNow(Date())
         Thread(logCleanerRunnable).start()

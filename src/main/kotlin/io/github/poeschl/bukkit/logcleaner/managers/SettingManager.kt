@@ -12,7 +12,7 @@ interface SettingsManager {
     fun updateConfig(config: FileConfiguration)
 
     companion object {
-        val KEEP_DAYS_KEY = "keepLogsFromLastDays"
+        const val KEEP_DAYS_KEY = "keepLogsFromLastDays"
     }
 }
 
